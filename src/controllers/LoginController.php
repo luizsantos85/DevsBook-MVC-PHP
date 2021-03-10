@@ -9,7 +9,7 @@ class LoginController extends Controller
 
   public function signin()
   {
-    echo 'Login';
+    $this->render('signin');
   }
 
   public function signup()
