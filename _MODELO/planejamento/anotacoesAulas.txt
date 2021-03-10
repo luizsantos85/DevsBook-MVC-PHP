@@ -1,0 +1,50 @@
+/*Anotações*/
+
+lembrar de sempre colocar base em todos os links do site
+receber os dados de login na função de signinAction e fazer as validações junto com UserHandler.
+
+--------------------------------------------------------------------------
+
+Controle da pastas
+1-Controller
+--HomeController
+---construct()
+---propriedades privadas
+---use \src\handlers\UserHandler
+---
+
+
+
+--LoginController 
+---function singin
+---function signinAction
+---function singup
+
+
+
+
+2-Model
+--User
+
+
+
+
+
+3-Rotas
+--HomeController@index
+--LoginController@singin
+--LoginCrontroler@singinAction  //rota para controle dos dados enviado do login
+--LoginController@singup
+
+
+4-handlers 
+--UserHandler (criado para especificação do login)
+---static function checkLogin()
+---static function verifyLogin($email,$password) //criar com os parametros de email e senha
+
+
+
+4-Views
+
+
+

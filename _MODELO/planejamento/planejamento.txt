@@ -1,0 +1,37 @@
+Planejamento do banco de dados
+-Usuário
+--id
+--email
+--password
+--nome
+--nascimento
+--cidade
+--trabalho
+--avatar
+--capa
+--token (será utilizado para verificação se está logado ou não, sem a necessidade de guardar senhas em sessões e cookies)
+-------------------------------------------------------------------------------------------------------------------------
+-UsuerRelations
+--id
+--user_from
+--user_to
+------------------------------------------------------------------------------------------------------------------------
+-Posts
+--id
+--type (text ou photo)
+--created_at
+--body
+------------------------------------------------------------------------------------------------------------------------
+-PostComments
+--id
+--id_post
+--id_user
+--created_at
+--body
+------------------------------------------------------------------------------------------------------------------------
+-PostLikes
+--id
+--id_post
+--id_user
+--created_at
+
