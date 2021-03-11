@@ -11,7 +11,7 @@
 <body>
   <header>
     <div class="container">
-      <a href=""><img src="<?= $base; ?>/assets/images/devsbook_logo.png" /></a>
+      <a href="<?= $base; ?>/"><img src="<?= $base; ?>/assets/images/devsbook_logo.png" /></a>
     </div>
   </header>
   <section class="container main">
@@ -21,13 +21,13 @@
         <div class="error" id="flash"><?= $flash; ?> </div>
       <?php endif; ?>
 
-      <input placeholder="Digite seu e-mail" class="input" type="email" name="email" />
+      <input placeholder="E-mail" class="input" type="email" name="email" />
 
-      <input placeholder="Digite sua senha" class="input" type="password" name="password" />
+      <input placeholder="Senha" class="input" type="password" name="password" />
 
       <input class="button" type="submit" value="Acessar o sistema" />
 
-      <a href="<?= $base; ?>/cadastro">Ainda não tem conta? Cadastre-se</a>
+      <a href="<?= $base; ?>/cadastro">Ainda não tem conta? Cadastre-se!</a>
     </form>
   </section>
 
@@ -42,6 +42,6 @@
     }
     removeMensagem();
   </script>
-</body>
 
+</body>
 </html>
