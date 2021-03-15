@@ -10,14 +10,14 @@ class LoginHandler
   {
     if (!empty($_SESSION['token'])) {
       $token = $_SESSION['token'];
-
       $data = User::select()->where('token', $token)->one();
+      // $data = User::select()->where('token', $token)->execute();
+
       if (count($data) > 0) {
         $loggedUser = new User();
-
         $loggedUser->id = $data['id'];
-        $loggedUser->email = $data['email'];
         $loggedUser->name = $data['name'];
+        $loggedUser->email = $data['email'];
 
         return $loggedUser;
       }
@@ -48,7 +48,7 @@ class LoginHandler
 
   public static function addUser($name, $email, $password, $birthdate)
   {
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($password, PASSWORD_BCRYPT);
     $token = md5(time() . rand(0, 9999) . time());
 
     User::insert([
