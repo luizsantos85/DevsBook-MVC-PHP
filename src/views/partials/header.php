@@ -10,28 +10,27 @@
 
 <body>
 
-
   <header>
     <div class="container">
       <div class="logo">
-        <a href=""><img src="<?= $base; ?>/assets/images/devsbook_logo.png" /></a>
+        <a href="<?= $base; ?>"><img src="<?= $base; ?>/assets/images/devsbook_logo.png" /></a>
       </div>
       <div class="head-side">
         <div class="head-side-left">
           <div class="search-area">
-            <form method="GET">
+            <form method="GET" action="<?= $base; ?>/pesquisa">
               <input type="search" placeholder="Pesquisar" name="s" />
             </form>
           </div>
         </div>
         <div class="head-side-right">
-          <a href="" class="user-area">
-            <div class="user-area-text">Bonieky</div>
+          <a href="<?= $base; ?>/prefil" class="user-area">
+            <div class="user-area-text"><?= $loggedUser->name; ?></div>
             <div class="user-area-icon">
-              <img src="<?= $base; ?>/media/avatars/avatar.jpg" />
+              <img src="<?= $base; ?>/media/avatars/<?= $loggedUser->avatar; ?>" />
             </div>
           </a>
-          <a href="" class="user-logout">
+          <a href="<?= $base; ?>/logout" class="user-logout">
             <img src="<?= $base; ?>/assets/images/power_white.png" />
           </a>
         </div>
