@@ -39,12 +39,16 @@
       <?= nl2br($data->body); ?>
     </div>
     <div class="feed-item-buttons row mt-20 m-width-20">
-      <div class="like-btn on">56</div>
-      <div class="msg-btn">3</div>
+      <div class="like-btn <?= ($data->liked ? 'on' : ''); ?>">
+        <?= $data->likeCount; ?>
+      </div>
+      <div class="msg-btn">
+        <?= count($data->comments); ?>
+      </div>
     </div>
     <div class="feed-item-comments">
 
-      <div class="fic-item row m-height-10 m-width-20">
+      <!-- <div class="fic-item row m-height-10 m-width-20">
         <div class="fic-item-photo">
           <a href="<?= $base; ?>/perfil">
             <img src="<?= $base; ?>/media/avatars/default.jpg" />
@@ -54,24 +58,12 @@
           <a href="<?= $base; ?>/">Bonieky Lacerda</a>
           Comentando no meu próprio post
         </div>
-      </div>
-
-      <div class="fic-item row m-height-10 m-width-20">
-        <div class="fic-item-photo">
-          <a href="<?= $base; ?>/">
-            <img src="<?= $base; ?>/media/avatars/default.jpg" />
-          </a>
-        </div>
-        <div class="fic-item-info">
-          <a href="<?= $base; ?>/">Bonieky Lacerda</a>
-          Muito legal, parabéns!
-        </div>
-      </div>
+      </div> -->
 
       <div class="fic-answer row m-height-10 m-width-20">
         <div class="fic-item-photo">
           <a href="<?= $base; ?>/">
-            <img src="<?= $base; ?>/media/avatars/default.jpg" />
+            <img src="<?= $base; ?>/media/avatars/<?= $loggedUser->avatar; ?>" />
           </a>
         </div>
         <input type="text" class="fic-item-field" placeholder="Escreva um comentário" />

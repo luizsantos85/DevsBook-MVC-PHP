@@ -46,6 +46,8 @@ class LoginHandler
 
   public static function addUser($name, $email, $password, $birthdate)
   {
+    $name = trim($name);
+    $email = strtolower($email);
     $hash = password_hash($password, PASSWORD_BCRYPT);
     $token = md5(time() . rand(0, 9999) . time());
 
