@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
   <link rel="stylesheet" href="<?= $base; ?>/assets/css/style.css" />
-  <title>Home - DevsBook</title>
+  <title>DevsBook</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="head-side-right">
-          <a href="<?= $base; ?>/prefil" class="user-area">
+          <a href="<?= $base; ?>/perfil" class="user-area">
             <div class="user-area-text"><?= $loggedUser->name; ?></div>
             <div class="user-area-icon">
               <img src="<?= $base; ?>/media/avatars/<?= $loggedUser->avatar; ?>" />
