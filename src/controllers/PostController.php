@@ -3,7 +3,7 @@
 namespace src\controllers;
 
 use \core\Controller;
-use \src\handlers\LoginHandler;
+use \src\handlers\UserHandler;
 use \src\handlers\PostHandler;
 
 
@@ -13,7 +13,7 @@ class PostController extends Controller
 
   public function __construct()
   {
-    $this->loggedUser = LoginHandler::checkLogin();
+    $this->loggedUser = UserHandler::checkLogin();
     if ($this->loggedUser === false) {
       $this->redirect('/login');
     }
@@ -22,8 +22,8 @@ class PostController extends Controller
   public function newPost()
   {
     $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_STRING);
-    if($body){
-      PostHandler::addPost($this->loggedUser->id,'text',$body);
+    if ($body) {
+      PostHandler::addPost($this->loggedUser->id, 'text', $body);
     }
     $this->redirect('/');
   }
