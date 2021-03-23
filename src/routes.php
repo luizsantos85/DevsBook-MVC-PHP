@@ -17,6 +17,8 @@ $router->post('/post/new', 'PostController@newPost');
 $router->get('/perfil/{id}', 'ProfileController@index');
 $router->get('/perfil', 'ProfileController@index');
 
+$router->get('/logout', 'LoginController@logout');
+
 
 
 // $router->get('/pesquisa, ');
