@@ -25,7 +25,7 @@
     let value = feedInput.innerText.trim();
 
     if (value != '') {
-      feedForm.querySelector('input[name=body]').value = value;
+      feedForm.querySelector('input [name=body]').value = value;
       feedForm.submit();
     }
   });
