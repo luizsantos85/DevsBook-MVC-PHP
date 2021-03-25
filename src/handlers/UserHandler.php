@@ -52,7 +52,7 @@ class UserHandler
     return $user ? true : false;
   }
 
-  public static function getUser($id,$full = false)
+  public static function getUser($id, $full = false)
   {
     $data = User::select()->where('id', $id)->one();
     if ($data) {
@@ -66,14 +66,14 @@ class UserHandler
       $user->avatar = $data['avatar'];
       $user->cover = $data['cover'];
 
-      if($full){
+      if ($full) {
         $user->followers = [];
         $user->following = [];
         $user->photos = [];
 
-        $followers = UserRelation::select()->where('user_to',$id)->get();
-        foreach($followers as $follower){
-          $userData = User::select('id',$follower['user_from'])->where()->one();
+        $followers = UserRelation::select()->where('user_to', $id)->get();
+        foreach ($followers as $follower) {
+          $userData = User::select('id', $follower['user_from'])->where()->one();
           $newUser = new User();
           $newUser->id = $userData['id'];
           $newUser->name = $userData['name'];
@@ -82,9 +82,9 @@ class UserHandler
           $user->followers[] = $newUser;
         }
 
-        $following = UserRelation::select()->where('user_from',$id)->get();
-        foreach($following as $follower){
-          $userData = User::select('id',$follower['user_to'])->where()->one();
+        $following = UserRelation::select()->where('user_from', $id)->get();
+        foreach ($following as $follower) {
+          $userData = User::select('id', $follower['user_to'])->where()->one();
           $newUser = new User();
           $newUser->id = $userData['id'];
           $newUser->name = $userData['name'];
@@ -94,7 +94,6 @@ class UserHandler
         }
 
         $user->photos = PostHandler::getPhotosFrom($id);
-        
       }
 
       return $user;
@@ -119,5 +118,15 @@ class UserHandler
     ])->execute();
 
     return $token;
+  }
+
+  public static function isFollowing($from, $to)
+  {
+    $data = UserRelation::select()->where('user_from', $from)->where('user_to', $to)->one();
+
+    if ($data) {
+      return true;
+    }
+    return false;
   }
 }
