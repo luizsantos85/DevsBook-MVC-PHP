@@ -24,17 +24,13 @@
             <div class="profile-info-data row">
               <?php if ($user->id != $loggedUser->id) : ?>
                 <div class="profile-info-item m-width-20">
-                  <?php if ($isFollowing) : ?>
-                    <a href="" class="button">Deixar de seguir</a>
-                  <?php else : ?>
-                    <a href="" class="button">Seguir</a>
-                  <?php endif; ?>
+                  <a href="<?= $base; ?>/perfil/<?= $user->id ?>/follow" class="button"><?= (!$isFollowing) ? 'Seguir' : 'Deixar de seguir'; ?></a>
                 </div>
               <?php endif; ?>
 
               <div class="profile-info-item m-width-20">
                 <div class="profile-info-item-n"><?= count($user->followers); ?></div>
-                <div class="profile-info-item-s">Seguidores</div>
+                <div class="profile-info-item-s"><?= (count($user->followers) <= 1) ? 'Seguidor' : 'Seguidores' ?></div>
               </div>
               <div class="profile-info-item m-width-20">
                 <div class="profile-info-item-n"><?= count($user->following); ?></div>
@@ -90,9 +86,9 @@
 
           <div class="box-body friend-list">
             <?php for ($q = 0; $q < 9; $q++) : ?>
-              <?php if (isset($user->followig[$q])) : ?>
+              <?php if (isset($user->following[$q])) : ?>
                 <div class="friend-icon">
-                  <a href="<?= $base; ?>/perfil/<?= $following->id; ?>">
+                  <a href="<?= $base; ?>/perfil/<?= $user->following[$q]->id; ?>">
                     <div class="friend-icon-avatar">
                       <img src="<?= $base; ?>/media/avatars/<?= $user->following[$q]->avatar; ?>" />
                     </div>
