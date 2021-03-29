@@ -132,4 +132,30 @@ class ProfileController extends Controller
       'isFollowing' => $isFollowing
     ]);
   }
+
+
+  public function config()
+  {
+     //detectando usuario acessado
+     $id = $this->loggedUser->id;
+     if (!empty($atts['id'])) {
+       $id = $atts['id'];
+     }
+ 
+     //pegando informações do usuario
+     $user = UserHandler::getUser($id, true);
+     if (!$user) {
+       $this->redirect('/');
+     }
+ 
+     $dateFrom = new \DateTime($user->birthdate);
+     $dateTo = new \DateTime('today');
+     $user->ageYears = $dateFrom->diff($dateTo)->y;
+ 
+   
+     $this->render('profile_config', [
+       'loggedUser' => $this->loggedUser,
+       'user' => $user,
+     ]);
+  }
 }
