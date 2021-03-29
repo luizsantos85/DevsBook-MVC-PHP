@@ -38,7 +38,7 @@
               </div>
               <div class="profile-info-item m-width-20">
                 <div class="profile-info-item-n"><?= count($user->photos); ?></div>
-                <div class="profile-info-item-s">Fotos</div>
+                <div class="profile-info-item-s"><?= (count($user->photos) <= 1) ? 'Foto' : 'Fotos' ?></div>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
               <span>(<?= count($user->following); ?>)</span>
             </div>
             <div class="box-header-buttons">
-              <a href="<?=$base; ?>/perfil/<?=$user->id;?>/amigos">ver todos</a>
+              <a href="<?= $base; ?>/perfil/<?= $user->id; ?>/amigos">ver todos</a>
             </div>
           </div>
 
@@ -112,7 +112,7 @@
               <span>(<?= count($user->photos); ?>)</span>
             </div>
             <div class="box-header-buttons">
-              <a href="">ver todos</a>
+              <a href="<?= $base; ?>/perfil/<?= $user->id; ?>/fotos">ver todos</a>
             </div>
           </div>
 
