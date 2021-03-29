@@ -24,9 +24,10 @@ $router->get('/amigos', 'ProfileController@friends');
 
 $router->get('/fotos','ProfileController@photos');
 
+$router->get('/pesquisa','SearchController@index');
+
 $router->get('/logout', 'LoginController@logout');
 
 
-// $router->get('/pesquisa, ');
 // $router->get('/config');
 
