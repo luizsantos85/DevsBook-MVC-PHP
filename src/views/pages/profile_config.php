@@ -12,17 +12,19 @@
           <?php if (!empty($flash)) : ?>
             <div class="error" id="flash"><?= $flash; ?> </div>
           <?php endif; ?>
-          <div >
+          <div>
             <label for="avatar">
               Novo avatar:
             </label>
             <input type="file" id="avatar" name="avatar">
+            <img src="<?= $base; ?>/media/avatars/<?= $user->avatar; ?>" alt="avatar <?= $user->name; ?>" class="config-img">
           </div>
           <div>
             <label for="capa">
               Nova capa:
             </label>
             <input type="file" id="capa" name="cover">
+            <img src="<?= $base; ?>/media/covers/<?= $user->cover; ?>" alt="capa <?= $user->name; ?>" class="config-img">
           </div>
 
           <hr>

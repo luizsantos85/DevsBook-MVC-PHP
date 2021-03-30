@@ -105,7 +105,6 @@ class ConfigController extends Controller
           $updateFields['cover'] = $coverName;
         }
       }
-
       UserHandler::updateUser($updateFields, $this->loggedUser->id);
     }
     $this->redirect('/config');
@@ -113,21 +112,23 @@ class ConfigController extends Controller
 
   private function cutImage($file, $width, $height, $folder)
   {
-    list($whidthOrig, $heightOrig) = getimagesize($file['tmp_name']);
-    $ratio = $whidthOrig / $heightOrig;
+    list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
+    $ratio = $widthOrig / $heightOrig;
 
     $newWidth = $width;
     $newHeight = $newWidth / $ratio;
+
     if ($newHeight < $height) {
       $newHeight = $height;
       $newWidth = $newHeight * $ratio;
     }
+
     $x = $width - $newWidth;
     $y = $height - $newHeight;
     $x = $x < 0 ? $x / 2 : $x;
     $y = $y < 0 ? $y / 2 : $y;
 
-    $finalImage = imagecreatetruecolor($x, $y);
+    $finalImage = imagecreatetruecolor($width, $height);
     switch ($file['type']) {
       case 'image/jpeg':
       case 'image/jpg':
@@ -138,13 +139,20 @@ class ConfigController extends Controller
         break;
     }
     imagecopyresampled(
-      $finalImage,$image,
-      $x,$y,0,0,
-      $newWidth,$newHeight,$whidthOrig,$heightOrig
+      $finalImage,
+      $image,
+      $x,
+      $y,
+      0,
+      0,
+      $newWidth,
+      $newHeight,
+      $widthOrig,
+      $heightOrig
     );
-    $fileName = md5(time().rand(0,999)).'.jpg';
+    $fileName = md5(time() . rand(0, 999)) . '.jpg';
 
-    imagejpeg($finalImage,$folder.'/'.$fileName);
+    imagejpeg($finalImage, $folder . '/' . $fileName);
     return $fileName;
   }
 }
