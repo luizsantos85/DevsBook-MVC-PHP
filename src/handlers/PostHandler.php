@@ -22,7 +22,7 @@ class PostHandler
     }
   }
 
-  public function _postListToObject($postList,$loggedUserId)
+  public function _postListToObject($postList, $loggedUserId)
   {
     $posts = [];
     foreach ($postList as $postItem) {
@@ -57,7 +57,7 @@ class PostHandler
 
   public static function getHomeFeed($idUser, $page)
   {
-    $perPage = 2;
+    $perPage = 5;
     //Lista de usuario que sigo.
     $userList = UserRelation::select()->where('user_from', $idUser)->get();
     $users = [];
@@ -80,7 +80,7 @@ class PostHandler
     $pageCount = ceil($total / $perPage);
 
     //transformar os objetos dos models
-    $posts = self::_postListToObject($postList,$idUser);
+    $posts = self::_postListToObject($postList, $idUser);
 
     //retornar o resultado
     return [
@@ -90,9 +90,9 @@ class PostHandler
     ];
   }
 
-  public static function getUserFeed($idUser, $page,$loggedUserId)
+  public static function getUserFeed($idUser, $page, $loggedUserId)
   {
-    $perPage = 2;
+    $perPage = 4;
 
     //Posts ordenados por data
     $postList = Post::select()
@@ -108,8 +108,8 @@ class PostHandler
     $pageCount = ceil($total / $perPage);
 
     //transformar os objetos dos models
-    $posts = self::_postListToObject($postList,$loggedUserId);
-    
+    $posts = self::_postListToObject($postList, $loggedUserId);
+
     //retornar o resultado
     return [
       'posts' => $posts,
