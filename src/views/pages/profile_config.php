@@ -8,21 +8,21 @@
       <div class="column pr-5">
         <h2>Configurações</h2>
 
-        <form action="<?= $base; ?>/config" method="POST" class="config">
+        <form action="<?= $base; ?>/config" method="POST" class="config" enctype="multipart/form-data">
           <?php if (!empty($flash)) : ?>
             <div class="error" id="flash"><?= $flash; ?> </div>
           <?php endif; ?>
-          <div class="">
+          <div >
             <label for="avatar">
               Novo avatar:
             </label>
-            <input type="file" id="avatar">
+            <input type="file" id="avatar" name="avatar">
           </div>
           <div>
             <label for="capa">
-              Novo capa:
+              Nova capa:
             </label>
-            <input type="file" id="capa">
+            <input type="file" id="capa" name="cover">
           </div>
 
           <hr>
@@ -79,9 +79,8 @@
 
           <button class="button">Salvar</button>
         </form>
-
-
       </div>
+
       <div class="column side pl-5">
         <?= $render('right-side'); ?>
       </div>

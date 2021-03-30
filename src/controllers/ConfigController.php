@@ -49,7 +49,7 @@ class ConfigController extends Controller
       $updateFields = [];
 
       $user = UserHandler::getUser($this->loggedUser->id);
-      
+
       //email
       if ($user->email != $email) {
         if (!UserHandler::emailExists($email)) {
@@ -86,8 +86,65 @@ class ConfigController extends Controller
       $updateFields['work'] = $work;
       $updateFields['city'] = $city;
 
+      //avatar
+      if (isset($_FILES['avatar']) && !empty($_FILES['avatar']['tmp_name'])) {
+        $newAvatar = $_FILES['avatar'];
+
+        if (in_array($newAvatar['type'], ['image/jpg', 'image/jpeg', 'image/png'])) {
+          $avatarName = $this->cutImage($newAvatar, 200, 200, 'media/avatars');
+          $updateFields['avatar'] = $avatarName;
+        }
+      }
+
+      //capa
+      if (isset($_FILES['cover']) && !empty($_FILES['cover']['tmp_name'])) {
+        $newCover = $_FILES['cover'];
+
+        if (in_array($newCover['type'], ['image/jpg', 'image/jpeg', 'image/png'])) {
+          $coverName = $this->cutImage($newCover, 850, 310, 'media/covers');
+          $updateFields['cover'] = $coverName;
+        }
+      }
+
       UserHandler::updateUser($updateFields, $this->loggedUser->id);
     }
     $this->redirect('/config');
+  }
+
+  private function cutImage($file, $width, $height, $folder)
+  {
+    list($whidthOrig, $heightOrig) = getimagesize($file['tmp_name']);
+    $ratio = $whidthOrig / $heightOrig;
+
+    $newWidth = $width;
+    $newHeight = $newWidth / $ratio;
+    if ($newHeight < $height) {
+      $newHeight = $height;
+      $newWidth = $newHeight * $ratio;
+    }
+    $x = $width - $newWidth;
+    $y = $height - $newHeight;
+    $x = $x < 0 ? $x / 2 : $x;
+    $y = $y < 0 ? $y / 2 : $y;
+
+    $finalImage = imagecreatetruecolor($x, $y);
+    switch ($file['type']) {
+      case 'image/jpeg':
+      case 'image/jpg':
+        $image = imagecreatefromjpeg($file['tmp_name']);
+        break;
+      case 'image/png':
+        $image = imagecreatefrompng($file['tmp_name']);
+        break;
+    }
+    imagecopyresampled(
+      $finalImage,$image,
+      $x,$y,0,0,
+      $newWidth,$newHeight,$whidthOrig,$heightOrig
+    );
+    $fileName = md5(time().rand(0,999)).'.jpg';
+
+    imagejpeg($finalImage,$folder.'/'.$fileName);
+    return $fileName;
   }
 }
