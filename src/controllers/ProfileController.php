@@ -116,9 +116,9 @@ class ProfileController extends Controller
       $this->redirect('/');
     }
 
-    $dateFrom = new \DateTime($user->birthdate);
-    $dateTo = new \DateTime('today');
-    $user->ageYears = $dateFrom->diff($dateTo)->y;
+    // $dateFrom = new \DateTime($user->birthdate);
+    // $dateTo = new \DateTime('today');
+    // $user->ageYears = $dateFrom->diff($dateTo)->y;
 
     //verificar se a pessoa segue o usuario
     $isFollowing = false;
@@ -147,12 +147,9 @@ class ProfileController extends Controller
      if (!$user) {
        $this->redirect('/');
      }
- 
-     $dateFrom = new \DateTime($user->birthdate);
-     $dateTo = new \DateTime('today');
-     $user->ageYears = $dateFrom->diff($dateTo)->y;
- 
-   
+     
+
+
      $this->render('profile_config', [
        'loggedUser' => $this->loggedUser,
        'user' => $user,

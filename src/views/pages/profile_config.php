@@ -8,8 +8,11 @@
       <div class="column pr-5">
         <h2>Configurações</h2>
 
-        <form action="">
-          <div>
+        <form action="<?= $base; ?>/config" method="POST" class="config">
+          <?php if (!empty($flash)) : ?>
+            <div class="error" id="flash"><?= $flash; ?> </div>
+          <?php endif; ?>
+          <div class="">
             <label for="avatar">
               Novo avatar:
             </label>
@@ -28,35 +31,35 @@
             <label for="name">
               Nome completo:
             </label>
-            <input type="text" id="name" value="<?= $user->name; ?>">
+            <input type="text" id="name" value="<?= $user->name; ?>" name="name">
           </div>
 
           <div>
             <label for="birthdate">
               Data de nascimento:
             </label>
-            <input type="text" id="birthdate" value="<?= $user->birthdate; ?>">
+            <input type="text" id="birthdate" value="<?= date('d/m/Y', strtotime($user->birthdate)); ?>" name="birthdate">
           </div>
 
           <div>
             <label for="email">
               E-mail:
             </label>
-            <input type="text" id="email" value="<?= $user->email; ?>">
+            <input type="text" id="email" value="<?= $user->email; ?>" name="email">
           </div>
 
           <div>
             <label for="city">
               Cidade:
             </label>
-            <input type="text" id="city" value="<?= $user->city; ?>">
+            <input type="text" id="city" value="<?= $user->city; ?>" name="city">
           </div>
 
           <div>
             <label for="work">
               Trabalho:
             </label>
-            <input type="text" id="work" value="<?= $user->work; ?>">
+            <input type="text" id="work" value="<?= $user->work; ?>" name="work">
           </div>
 
           <hr>
@@ -65,14 +68,15 @@
             <label for="password">
               Senha:
             </label>
-            <input type="text" id="password" value="">
+            <input type="password" id="password" name="password">
           </div>
           <div>
-            <label for="confirmPass">
+            <label for="passwordConfirm">
               Confirmar senha:
             </label>
-            <input type="text" id="confirmPass" >
+            <input type="password" id="passwordConfirm" name="passwordConfirm">
           </div>
+
           <button class="button">Salvar</button>
         </form>
 
