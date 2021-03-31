@@ -29,4 +29,6 @@ $router->post('/config','ConfigController@configAction');
 
 $router->get('/pesquisa', 'SearchController@index');
 
+$router->get('/ajax/like/{id}','AjaxController@like');
+
 $router->get('/logout', 'LoginController@logout');
