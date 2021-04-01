@@ -7,7 +7,7 @@
         </a>
       </div>
       <div class="feed-item-head-info">
-        <a href="<?= $base; ?>/perfil">
+        <a href="<?= $base; ?>/perfil/<?= $data->user->id; ?>">
           <span class="fidi-name">
             <?= $data->user->name; ?>
           </span>
@@ -48,21 +48,26 @@
     </div>
     <div class="feed-item-comments">
 
-      <!-- <div class="fic-item row m-height-10 m-width-20">
-        <div class="fic-item-photo">
-          <a href="<?= $base; ?>/perfil">
-            <img src="<?= $base; ?>/media/avatars/default.jpg" />
-          </a>
-        </div>
-        <div class="fic-item-info">
-          <a href="<?= $base; ?>/">Bonieky Lacerda</a>
-          Comentando no meu próprio post
-        </div>
-      </div> -->
+      <div class="feed-item-comments-area">
+        <?php foreach ($data->comments as $item) : ?>
+          <div class="fic-item row m-height-10 m-width-20">
+            <div class="fic-item-photo">
+              <a href="<?= $base; ?>/perfil/<?= $item['user']['id'] ?>">
+                <img src="<?= $base; ?>/media/avatars/<?= $item['user']['avatar']; ?>" />
+              </a>
+            </div>
+            <div class="fic-item-info">
+              <a href="<?= $base; ?>/perfil/<?= $item['user']['id'] ?>"><?= $item['user']['name']; ?></a>
+              <?= $item['body']; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
 
       <div class="fic-answer row m-height-10 m-width-20">
         <div class="fic-item-photo">
-          <a href="<?= $base; ?>/">
+          <a href="<?= $base; ?>/perfil/<?= $data->user->id; ?>">
             <img src="<?= $base; ?>/media/avatars/<?= $loggedUser->avatar; ?>" />
           </a>
         </div>

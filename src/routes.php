@@ -25,10 +25,11 @@ $router->get('/amigos', 'ProfileController@friends');
 $router->get('/fotos', 'ProfileController@photos');
 
 $router->get('/config', 'ConfigController@index');
-$router->post('/config','ConfigController@configAction');
+$router->post('/config', 'ConfigController@configAction');
 
 $router->get('/pesquisa', 'SearchController@index');
 
-$router->get('/ajax/like/{id}','AjaxController@like');
+$router->get('/ajax/like/{id}', 'AjaxController@like');
+$router->post('/ajax/comment', 'AjaxController@comment');
 
 $router->get('/logout', 'LoginController@logout');
