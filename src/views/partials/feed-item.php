@@ -31,9 +31,15 @@
         </span>
       </div>
 
-      <div class="feed-item-head-btn">
-        <img src="<?= $base; ?>/assets/images/more.png" />
-      </div>
+      <?php if ($data->mine) : ?>
+        <div class="feed-item-head-btn">
+          <img src="<?= $base; ?>/assets/images/more.png" />
+          <div class="feed-item-more-window">
+            <a href="<?= $base; ?>/post/<?= $data->id; ?>/delete">Excluir post</a>
+          </div>
+        </div>
+      <?php endif; ?>
+
     </div>
     <div class="feed-item-body mt-10 m-width-20">
       <?php
