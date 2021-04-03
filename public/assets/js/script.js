@@ -34,7 +34,7 @@ if (document.querySelector('.tab-item')) {
 
 document
   .querySelector('.feed-new-input-placeholder')
-  .addEventListener('click', function (obj) {
+  .addEventListener('click', function(obj) {
     obj.target.style.display = 'none';
     document.querySelector('.feed-new-input').style.display = 'block';
     document.querySelector('.feed-new-input').focus();
@@ -43,7 +43,7 @@ document
 
 document
   .querySelector('.feed-new-input')
-  .addEventListener('blur', function (obj) {
+  .addEventListener('blur', function(obj) {
     let value = obj.target.innerText.trim();
     if (value == '') {
       obj.target.style.display = 'none';

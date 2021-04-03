@@ -271,6 +271,14 @@ header .head-side {
   display: none;
   color: #333;
 }
+.feed-new-photo {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.feed-new-photo img {
+  width: 25px;
+  height: 25px;
+}
 .feed-new-send {
   cursor: pointer;
   margin-right: 5px;
@@ -278,6 +286,12 @@ header .head-side {
 .feed-new-send img {
   width: 25px;
   height: 25px;
+}
+
+.feed-new-file{
+  position: absolute;
+  z-index: -1;
+  display: none;
 }
 
 .banners .box-body {
