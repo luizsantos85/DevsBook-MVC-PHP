@@ -82,7 +82,11 @@ form .button:hover {
 form a {
   text-decoration: none;
   color: #4a76a8;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
 }
+
 
 .error {
   padding: 10px;

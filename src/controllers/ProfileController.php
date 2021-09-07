@@ -148,8 +148,6 @@ class ProfileController extends Controller
        $this->redirect('/');
      }
      
-
-
      $this->render('profile_config', [
        'loggedUser' => $this->loggedUser,
        'user' => $user,
