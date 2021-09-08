@@ -3,7 +3,7 @@
 namespace src\handlers;
 
 use \src\models\User;
-use \src\models\Resetpassword;
+use \src\models\ResetPassword;
 
 class ResetPassHandler
 {

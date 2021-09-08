@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Resetar Senha - Devsbook</title>
+  <title>Login - Devsbook</title>
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
   <link rel="stylesheet" href="<?= $base; ?>/assets/css/login.css" />
 </head>
@@ -15,18 +15,17 @@
     </div>
   </header>
   <section class="container main">
-    <form method="POST" action="<?= $base; ?>/resetPass">
+    <form method="POST" action="<?= $base; ?>/resetPass/<?=$hash['hash']?>">
 
       <?php if (!empty($flash)) : ?>
         <div class="error" id="flash"><?= $flash; ?> </div>
       <?php endif; ?>
 
-      <input placeholder="Digite seu e-mail" class="input" type="email" name="email" />
+      <input placeholder="Senha" class="input" type="password" name="password" />
 
-      <input class="button" type="submit" value="Resetar senha" />
+      <input placeholder="Confirme sua senha" class="input" type="password" name="confirmPass" />
 
-      <a href="<?= $base; ?>/login">Já possui conta? Faça o login!</a>
-
+      <input class="button" type="submit" value="Redefinir senha" />
     </form>
   </section>
 

@@ -8,10 +8,10 @@ use PHPMailer\PHPMailer\SMTP;
 
 class MailHandler
 {
-  private $email = 'naoresponda@lhscode.com.br'; //Trocar e-mail aqui!
-  private $password = 'Luizin07'; //Trocar senha aqui!
-  private $host = 'mail.lhscode.com.br';
-  private $port = 465;
+  private $email = 'naoresponda@lhscode.com.br'; //Trocar e-mail aqui! email de teste
+  private $password = 'Teste1234'; //Trocar senha aqui!
+  private $host = 'mail.lhscode.com.br';  //Seu host
+  private $port = 465;  //Porta do seu Host
   private $mail;
 
   public function __construct()
@@ -23,7 +23,7 @@ class MailHandler
 
   private function serverSettings()
   {
-    $this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    //$this->mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $this->mail->isSMTP();                                            //Send using SMTP
     $this->mail->Host = $this->host;                  //Set the SMTP server to send through
     $this->mail->SMTPAuth = true;                                   //Enable SMTP authentication

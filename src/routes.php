@@ -10,8 +10,9 @@ $router->get('/login', 'LoginController@signin');
 $router->post('/login', 'LoginController@signinAction');
 
 $router->get('/resetPass','ResetPassController@resetPassword');
-// $route->post('/resetPass','ResetPassController@resetPass');
-
+$router->post('/resetPass','ResetPassController@resetPasswordAction');
+$router->get('/resetPass/{token}','ResetPassController@pageResetPass');
+$router->post('/resetPass/{token}','ResetPassController@pageResetPassAction');
 
 $router->get('/cadastro', 'LoginController@signup');
 $router->post('/cadastro', 'LoginController@signupAction');
